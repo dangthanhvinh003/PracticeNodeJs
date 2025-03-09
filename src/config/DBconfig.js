@@ -1,5 +1,5 @@
 const mongoose = require("mongoose"); // always init in herehere
-require("dotenv").config();
+
 const dbState = [
   { value: 0, label: "disconnected" },
   { value: 1, label: "connected" },
@@ -10,7 +10,7 @@ const dbState = [
 const connection = async () => {
   // Or:
   try {
-    const option = { dbName: process.env.DB_Name };
+    const option = { dbName: "Practice" };
     await mongoose.connect("mongodb://127.0.0.1:27017", option);
     console.log("OK Nha");
     const state = Number(mongoose.connection.readyState);
