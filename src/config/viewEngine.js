@@ -3,7 +3,7 @@ const path = require("path");
 
 const configViewEngine = (app) => {
   //teamplate
-  app.set("views", path.resolve("./src", "views"));
+  app.set("views", path.resolve("./src", "View"));
   app.set("view engine", "ejs");
   console.log("dirNamedirName" + __dirname);
   //sttic files : css

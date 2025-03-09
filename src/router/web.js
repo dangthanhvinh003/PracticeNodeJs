@@ -1,4 +1,5 @@
 const express = require("express");
+const { getAllUser } = require("../controller/UserController");
 // const {
 //   getHompage,
 //   getAddUserPage,
@@ -12,9 +13,7 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Hello");
-});
+router.get("/", getAllUser);
 
 //Uset
 // router.get("/getAddUser", getAddUserPage);

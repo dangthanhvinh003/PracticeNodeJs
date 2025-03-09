@@ -1,0 +1,30 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="1px">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Country</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <%= JSON.stringify(ListUser) %> <% for(var i = 0; i < ListUser.length;
+      i++) { %>
+      <tr>
+        <td><%= ListUser[i].id %></td>
+        <td><%= ListUser[i].name %></td>
+        <td><%= ListUser[i].email %></td>
+        <td><%= ListUser[i].city %></td>
+        <td><a href="/editUser/<%= ListUser[i].id %>">Edit</a></td>
+        <td><a href="/deleteUser/<%= ListUser[i].id %>">Delete</a></td>
+      </tr>
+      <% } %>
+    </table>
+  </body>
+</html>
