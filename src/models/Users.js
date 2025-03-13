@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
   pass: String,
   city: String,
   role: String,
+  img: String,
 });
 // Kích hoạt auto-increment cho userId
 UserSchema.plugin(AutoIncrement, { inc_field: "userId" });

@@ -1,5 +1,10 @@
 const express = require("express");
-const { getAllUser } = require("../controller/UserController");
+const {
+  getAllUser,
+  getUserById,
+  postUpdateUser,
+  postAddUser,
+} = require("../controller/UserController");
 // const {
 //   getHompage,
 //   getAddUserPage,
@@ -14,6 +19,9 @@ const { getAllUser } = require("../controller/UserController");
 const router = express.Router();
 
 router.get("/", getAllUser);
+router.get("/:id", getUserById);
+router.post("/updateUser", postUpdateUser);
+router.post("/addUser", postAddUser);
 
 //Uset
 // router.get("/getAddUser", getAddUserPage);
