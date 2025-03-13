@@ -10,7 +10,7 @@ const dbState = [
 const connection = async () => {
   // Or:
   try {
-    const option = { dbName: "vinh" };
+    const option = { dbName: "ProjectNode" };
     await mongoose.connect("mongodb://127.0.0.1:27017", option);
     console.log("OK Nha");
     const state = Number(mongoose.connection.readyState);

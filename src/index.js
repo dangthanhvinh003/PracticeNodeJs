@@ -5,6 +5,7 @@ const router = require("./router/web");
 const connection = require("./config/DBconfig");
 const mongoose = require("mongoose");
 const configViewEngine = require("./config/viewEngine");
+
 //config get from input
 app.use(express.json()); // for json
 app.use(express.urlencoded({ extended: true }));
