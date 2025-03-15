@@ -14,10 +14,9 @@ const {
 const {
   getAllOrder,
   getOrderById,
-
   postAddOrder,
 } = require("../controller/OrderController");
-
+const { getLogin, Login } = require("../controller/LoginController");
 const router = express.Router();
 //UserUser
 router.get("/User", getAllUser);
@@ -35,5 +34,9 @@ router.post("/Product/addProduct", postAddProduct);
 router.get("/Order", getAllOrder);
 router.get("/Order/:id", getOrderById);
 router.post("/Order/addOrder", postAddOrder);
+
+//Login
+router.get("/login", getLogin);
+router.post("/login", Login);
 
 module.exports = router;
