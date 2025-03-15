@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "67d2e225cc867ce2d10350d9"
+  },
+  "id": "userId",
+  "reference_value": null,
+  "seq": 13
+},
+{
+  "_id": {
+    "$oid": "67d4dc44cc867ce2d10350da"
+  },
+  "id": "productId",
+  "reference_value": null,
+  "seq": 3
+},
+{
+  "_id": {
+    "$oid": "67d4dfc1cc867ce2d10350db"
+  },
+  "reference_value": null,
+  "id": "orderId",
+  "seq": 2
+}]

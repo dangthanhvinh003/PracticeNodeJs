@@ -1,0 +1,135 @@
+[{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b740"
+  },
+  "userId": 1,
+  "name": "John",
+  "email": "john@example.com",
+  "pass": "1234",
+  "city": "New York"
+},
+{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b741"
+  },
+  "userId": 2,
+  "name": "Alice",
+  "email": "alice@example.com",
+  "pass": "5678",
+  "city": "Los Angeles"
+},
+{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b742"
+  },
+  "userId": 3,
+  "name": "Bob",
+  "email": "bob@example.com",
+  "pass": "abcd",
+  "city": "Chicago"
+},
+{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b743"
+  },
+  "userId": 4,
+  "name": "Carol",
+  "email": "carol@example.com",
+  "pass": "efgh",
+  "city": "Houston"
+},
+{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b744"
+  },
+  "userId": 5,
+  "name": "Dave",
+  "email": "dave@example.com",
+  "pass": "ijkl",
+  "city": "Phoenix"
+},
+{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b745"
+  },
+  "userId": 6,
+  "name": "Eve",
+  "email": "eve@example.com",
+  "pass": "mnop",
+  "city": "Philadelphia"
+},
+{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b746"
+  },
+  "userId": 7,
+  "name": "Frank",
+  "email": "frank@example.com",
+  "pass": "qrst",
+  "city": "San Antonio"
+},
+{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b747"
+  },
+  "userId": 8,
+  "name": "Grace",
+  "email": "grace@example.com",
+  "pass": "uvwx",
+  "city": "San Diego"
+},
+{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b748"
+  },
+  "userId": 9,
+  "name": "Henry",
+  "email": "henry@example.com",
+  "pass": "yzab",
+  "city": "Dallas"
+},
+{
+  "_id": {
+    "$oid": "67d2d6f9be8d1fe7ba72b749"
+  },
+  "userId": 10,
+  "name": "Ivy",
+  "email": "ivy@example.com",
+  "pass": "cdef",
+  "city": "San Jose"
+},
+{
+  "_id": {
+    "$oid": "67d2d78bbe8d1fe7ba72b765"
+  },
+  "userId": 11,
+  "name": "Thành Vinh",
+  "email": "a",
+  "pass": "vinh",
+  "city": "San Jose",
+  "role": "admin",
+  "img": "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-1/316528610_2208990659281394_7664043127698612767_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=107&ccb=1-7&_nc_sid=e99d92&_nc_ohc=2KH0YaDWD0kQ7kNvgH_6Uh1&_nc_oc=AdgxuC0u_NH-ZuyJO75MC5yhtKbEvuA1sQcKr_wkppDqh0Th6_BYeicFzVGAnLV-hfT-zzYBpanPggIh4a0TxFFS&_nc_zt=24&_nc_ht=scontent.fdad3-5.fna&_nc_gid=AHEbMaIMFnO18lJ3EAlipg7&oh=00_AYF-TlwUNxNOUj9YbxeKw8LbglobSEc7_UKKac4AHXLQXQ&oe=67D8B835"
+},
+{
+  "_id": {
+    "$oid": "67d2e387f316ce4a12c59e56"
+  },
+  "name": "a",
+  "email": "a",
+  "pass": "a",
+  "city": "Đà nẵng",
+  "userId": 12,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d2e389f316ce4a12c59e5a"
+  },
+  "name": "Thành Vinh",
+  "email": "a",
+  "pass": "a",
+  "city": "Đà nẵng",
+  "userId": 13,
+  "__v": 0,
+  "img": "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-1/316528610_2208990659281394_7664043127698612767_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=107&ccb=1-7&_nc_sid=e99d92&_nc_ohc=2KH0YaDWD0kQ7kNvgH_6Uh1&_nc_oc=AdgxuC0u_NH-ZuyJO75MC5yhtKbEvuA1sQcKr_wkppDqh0Th6_BYeicFzVGAnLV-hfT-zzYBpanPggIh4a0TxFFS&_nc_zt=24&_nc_ht=scontent.fdad3-5.fna&_nc_gid=AHEbMaIMFnO18lJ3EAlipg7&oh=00_AYF-TlwUNxNOUj9YbxeKw8LbglobSEc7_UKKac4AHXLQXQ&oe=67D8B835"
+}]
