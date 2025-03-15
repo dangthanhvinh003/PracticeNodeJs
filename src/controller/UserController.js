@@ -12,6 +12,19 @@ const getAllUser = async (req, res) => {
 const getUserById = async (req, res) => {
   let id = req.params.id;
   let result = await User.find({ userId: id });
+  // console.log("check Session: " + JSON.stringify(req.session.user, null, 2));
+  // console.log(
+  //   "check Session: " + JSON.stringify(req.session.user.userId, null, 2)
+  // );
+  // console.log(
+  //   "check Session: " + JSON.stringify(req.session.user.name, null, 2)
+  // );
+  // console.log(
+  //   "check Session: " + JSON.stringify(req.session.user.email, null, 2)
+  // );
+  // console.log(
+  //   "check Session: " + JSON.stringify(req.session.user.pass, null, 2)
+  // );
   console.log(result);
   //res.render("Homepage", { ListUser: result });
   return res.status(200).json({

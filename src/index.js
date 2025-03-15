@@ -5,6 +5,18 @@ const router = require("./router/web");
 const connection = require("./config/DBconfig");
 const mongoose = require("mongoose");
 const configViewEngine = require("./config/viewEngine");
+const session = require("express-session");
+
+//session config
+
+app.use(
+  session({
+    secret: "super_secret_123",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+  })
+);
 
 //config get from input
 app.use(express.json()); // for json

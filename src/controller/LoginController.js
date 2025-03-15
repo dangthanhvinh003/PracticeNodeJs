@@ -7,8 +7,9 @@ const getLogin = (req, res) => {
 const Login = async (req, res) => {
   const { email, pass } = req.body;
   let result = await User.findOne({ email, pass });
-  console.log("Check rêult : " + result);
+  //console.log("Check rêult : " + result);
   if (result != null) {
+    req.session.user = result;
     let List = await User.find({});
     res.render("Homepage", { ListUser: List, User: result });
   } else {
