@@ -5,28 +5,35 @@ const {
   postUpdateUser,
   postAddUser,
 } = require("../controller/UserController");
-// const {
-//   getHompage,
-//   getAddUserPage,
-//   getEditUser,
-// } = require("../controller/homeController");
-// const {
-//   postAddUser,
-//   postEditUser,
-//   getDeleteUser,
-// } = require("../controller/UserController");
+const {
+  getAllProduct,
+  getProductById,
+  postUpdateProduct,
+  postAddProduct,
+} = require("../controller/ProductController");
+const {
+  getAllOrder,
+  getOrderById,
+
+  postAddOrder,
+} = require("../controller/OrderController");
 
 const router = express.Router();
+//UserUser
+router.get("/User", getAllUser);
+router.get("/User/:id", getUserById);
+router.post("/User/updateUser", postUpdateUser);
+router.post("/User/addUser", postAddUser);
 
-router.get("/", getAllUser);
-router.get("/:id", getUserById);
-router.post("/updateUser", postUpdateUser);
-router.post("/addUser", postAddUser);
+//product
+router.get("/Product", getAllProduct);
+router.get("/Product/:id", getProductById);
+router.post("/Product/updateProduct", postUpdateProduct);
+router.post("/Product/addProduct", postAddProduct);
 
-//Uset
-// router.get("/getAddUser", getAddUserPage);
-// router.post("/CreateNewUser", postAddUser);
-// router.get("/editUser/:id", getEditUser);
-// router.post("/editUser", postEditUser);
-// router.get("/deleteUser/:id", getDeleteUser);
+//Order
+router.get("/Order", getAllOrder);
+router.get("/Order/:id", getOrderById);
+router.post("/Order/addOrder", postAddOrder);
+
 module.exports = router;

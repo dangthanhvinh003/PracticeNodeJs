@@ -11,7 +11,8 @@ const getAllProduct = async (req, res) => {
 };
 const getProductById = async (req, res) => {
   let id = req.params.id;
-  let result = await Product.find({ userId: id });
+  console.log(id);
+  let result = await Product.find({ productId: id });
   console.log(result);
   //res.render("Homepage", { ListUser: result });
   return res.status(200).json({
@@ -38,4 +39,31 @@ const postUpdateProduct = async (req, res) => {
     data: result,
   });
 };
-module.exports = { getAllProduct };
+
+const postAddProduct = async (req, res) => {
+  let name = req.body.name;
+  let img = req.body.img;
+  let type = req.body.type;
+  let price = req.body.price;
+  let quantity = req.body.quantity;
+  //const { id, name, email, img } = req.body;
+  let user = await Product.create({
+    name: name,
+    img: img,
+    type: type,
+    price: price,
+    quantity: quantity,
+  });
+
+  console.log(user);
+
+  return res.status(200).json({
+    data: user,
+  });
+};
+module.exports = {
+  getAllProduct,
+  getProductById,
+  postAddProduct,
+  postUpdateProduct,
+};
