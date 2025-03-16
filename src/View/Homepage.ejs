@@ -81,6 +81,13 @@
             <div class="card-body">
               <h5 class="card-title"><%= ListProduct[i].name %></h5>
               <p class="card-text">Price: $<%= ListProduct[i].price %></p>
+              <% if(User && User.role == "admin") { %>
+              <a
+                href="/Product/<%= ListProduct[i].productId %>"
+                class="btn btn-primary"
+                >Edit</a
+              >
+              <%}%>
               <a
                 href="/Product/<%= ListProduct[i].productId %>"
                 class="btn btn-primary"

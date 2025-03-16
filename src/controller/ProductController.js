@@ -10,14 +10,15 @@ const getAllProduct = async (req, res) => {
   });
 };
 const getProductById = async (req, res) => {
-  let id = req.params.id;
+  let id = Number(req.params.id);
+  console.log("Received ID:", id, "Type:", typeof id);
   console.log(id);
-  let result = await Product.find({ productId: id });
-  console.log(result);
-  //res.render("Homepage", { ListUser: result });
-  return res.status(200).json({
-    data: result,
-  });
+  let result = await Product.findOne({ productId: id });
+  if (!result) {
+    return res.status(404).send("Product not found");
+  }
+  console.log("After Received ID:", id, "Type:", typeof id);
+  res.render("Product/DetailProduct", { productDetail: result });
 };
 
 const postUpdateProduct = async (req, res) => {

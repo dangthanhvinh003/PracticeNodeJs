@@ -1,5 +1,5 @@
 const Order = require("../models/Orders");
-
+const Product = require("../models/Products");
 const getAllOrder = async (req, res) => {
   let result = await Order.find({});
   console.log(result);
@@ -21,14 +21,27 @@ const getOrderById = async (req, res) => {
 };
 
 const postAddOrder = async (req, res) => {
-  const { userId, productId, quantity } = req.body;
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
+  let userId = req.session.user.userId;
+
+  const { productId, quantity } = req.body;
   console.log("Received data:", req.body); // kiểm tra dữ liệu nhận được
 
   const newOrder = new Order({ userId, productId, quantity });
   await newOrder.save();
-  return res.status(200).json({
-    data: newOrder,
-  });
+
+  //update quantity
+
+  let product = await Product.findOne({ productId });
+  console.log("check product after get : " + product);
+  if (product) {
+    let newQuantity = product.quantity - Number(quantity);
+    console.log("check quantity after count : " + newQuantity);
+    await Product.updateOne({ productId }, { quantity: newQuantity });
+  }
+  return res.redirect("/");
 };
 module.exports = {
   getAllOrder,

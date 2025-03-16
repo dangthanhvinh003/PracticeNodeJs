@@ -45,5 +45,11 @@ router.post("/Order/addOrder", postAddOrder);
 router.get("/", getInit);
 router.get("/login", getLogin);
 router.post("/login", Login);
-
+//log out
+router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    res.clearCookie("connect.sid"); // Xóa cookie session
+    return res.redirect("/"); // Chuyển hướng về trang login
+  });
+});
 module.exports = router;
