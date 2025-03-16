@@ -4,6 +4,7 @@ const {
   getUserById,
   postUpdateUser,
   postAddUser,
+  getEditUser,
 } = require("../controller/UserController");
 const {
   getAllProduct,
@@ -18,11 +19,16 @@ const {
 } = require("../controller/OrderController");
 const { getLogin, Login, getInit } = require("../controller/LoginController");
 const router = express.Router();
+const multer = require("multer");
+// Cấu hình Multer để upload file lên bộ nhớ
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 //UserUser
 router.get("/User", getAllUser);
 router.get("/User/:id", getUserById);
-router.post("/User/updateUser", postUpdateUser);
+router.post("/User/updateUser", upload.single("img"), postUpdateUser);
 router.post("/User/addUser", postAddUser);
+router.get("/editUser", getEditUser);
 
 //product
 router.get("/Product", getAllProduct);
