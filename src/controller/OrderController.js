@@ -9,10 +9,13 @@ const getAllOrder = async (req, res) => {
     data: result,
   });
 };
-const getOrderById = async (req, res) => {
-  let id = req.params.id;
+const getOrderByUserId = async (req, res) => {
+  let id = req.session.user.userId;
   console.log(id);
-  let result = await Order.find({ orderId: id });
+  let result = await Order.findMany({
+    where: { userId: id },
+  });
+
   console.log(result);
   //res.render("Homepage", { ListUser: result });
   return res.status(200).json({
@@ -45,6 +48,6 @@ const postAddOrder = async (req, res) => {
 };
 module.exports = {
   getAllOrder,
-  getOrderById,
+  getOrderByUserId,
   postAddOrder,
 };
