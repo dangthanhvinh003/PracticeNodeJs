@@ -18,9 +18,7 @@ const getOrderByUserId = async (req, res) => {
 
   console.log(result);
   //res.render("Homepage", { ListUser: result });
-  return res.status(200).json({
-    data: result,
-  });
+  return res.render("Product/DetailProduct", { listOrder: result });
 };
 
 const postAddOrder = async (req, res) => {
