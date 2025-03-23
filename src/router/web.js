@@ -14,7 +14,7 @@ const {
 } = require("../controller/ProductController");
 const {
   getAllOrder,
-  getOrderById,
+  // getOrderById,
   postAddOrder,
 } = require("../controller/OrderController");
 const { getLogin, Login, getInit } = require("../controller/LoginController");
@@ -38,7 +38,7 @@ router.post("/Product/addProduct", postAddProduct);
 
 //Order
 router.get("/Order", getAllOrder);
-router.get("/Order/:id", getOrderById);
+// router.get("/Order/:id", getOrderById);
 router.post("/Order/addOrder", postAddOrder);
 
 //Login

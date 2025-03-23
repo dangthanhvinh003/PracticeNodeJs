@@ -11,13 +11,13 @@ const getAllProduct = async (req, res) => {
 };
 const getProductById = async (req, res) => {
   let id = Number(req.params.id);
-  console.log("Received ID:", id, "Type:", typeof id);
-  console.log(id);
+  if (isNaN(id)) {
+    return res.status(400).send("Invalid product ID");
+  }
   let result = await Product.findOne({ productId: id });
   if (!result) {
     return res.status(404).send("Product not found");
   }
-  console.log("After Received ID:", id, "Type:", typeof id);
   res.render("Product/DetailProduct", { productDetail: result });
 };
 
