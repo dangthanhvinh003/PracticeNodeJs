@@ -5,11 +5,11 @@ const ProductSchema = new mongoose.Schema({
   // Auto increment
   // install library npm install mongoose-sequence
   productId: { type: Number, unique: true }, // Số tự động tăng
-  name: String,
-  img: String,
-  type: String,
-  price: String,
-  quantity: Number,
+  name: { type: String },
+  img: { type: String },
+  type: { type: String },
+  price: { type: String },
+  quantity: { type: Number },
 });
 // Kích hoạt auto-increment cho userId
 ProductSchema.plugin(AutoIncrement, { inc_field: "productId" });
