@@ -45,6 +45,11 @@
             </button>
           </form>
           <% if (User) { %>
+          <div class="ml-auto">
+            <a class="btn btn-outline-light btn-primary" href="/Order/cart">
+              <i class="fas fa-shopping-cart"></i> Cart
+            </a>
+          </div>
           <div class="dropdown">
             <img
               src="<%=User.img%>"
@@ -74,7 +79,7 @@
         <div class="col-md-4 mb-4">
           <div class="card">
             <img
-              src="<%= ListProduct[i].img %>"
+              src="https://picsum.photos/400/300"
               class="card-img-top"
               alt="Product Image"
             />

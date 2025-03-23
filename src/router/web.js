@@ -12,11 +12,7 @@ const {
   postUpdateProduct,
   postAddProduct,
 } = require("../controller/ProductController");
-const {
-  getAllOrder,
-  // getOrderById,
-  postAddOrder,
-} = require("../controller/OrderController");
+const { getCart, postAddOrder } = require("../controller/OrderController");
 const { getLogin, Login, getInit } = require("../controller/LoginController");
 const router = express.Router();
 const multer = require("multer");
@@ -37,9 +33,8 @@ router.post("/Product/updateProduct", postUpdateProduct);
 router.post("/Product/addProduct", postAddProduct);
 
 //Order
-router.get("/Order", getAllOrder);
-// router.get("/Order/:id", getOrderById);
 router.post("/Order/addOrder", postAddOrder);
+router.get("/Order/cart", getCart);
 
 //Login
 router.get("/", getInit);

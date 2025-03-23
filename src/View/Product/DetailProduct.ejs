@@ -42,66 +42,69 @@
       }
     </style>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="/">Brand</a>
-      </div>
-    </nav>
-
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-6">
-          <img
-            src="<%= productDetail.img %>"
-            class="img-fluid rounded shadow"
-            alt="Product Image"
-          />
+  <body class="d-flex flex-column min-vh-100">
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">Brand</a>
+          <div class="ml-auto">
+            <a class="btn btn-outline-light" href="/Order/cart">
+              <i class="fas fa-shopping-cart"></i> Cart
+            </a>
+          </div>
         </div>
-        <div class="col-md-6">
-          <h2><%= productDetail.name %></h2>
-          <h4 class="text-primary">$<%= productDetail.price %></h4>
-          <p><%= productDetail.description %></p>
-          <form action="/Order/addOrder" method="POST">
-            <input
-              type="hidden"
-              name="productId"
-              value="<%= productDetail.productId %>"
+      </nav>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              src="https://picsum.photos/400/300"
+              class="img-fluid rounded shadow"
+              alt="Product Image"
             />
-
-            <label for="quantity">Quantity:</label>
-            <div style="display: flex; align-items: center">
-              <div class="quantity-container">
-                <button type="button" onclick="changeQuantity(-1)">−</button>
-                <input
-                  type="number"
-                  id="quantity"
-                  name="quantity"
-                  value="1"
-                  min="1"
-                />
-                <button type="button" onclick="changeQuantity(1)">+</button>
+          </div>
+          <div class="col-md-6">
+            <h2><%= productDetail.name %></h2>
+            <h4 class="text-primary">$<%= productDetail.price %></h4>
+            <p><%= productDetail.description %></p>
+            <form action="/Order/addOrder" method="POST">
+              <input
+                type="hidden"
+                name="productId"
+                value="<%= productDetail.productId %>"
+              />
+              <label for="quantity">Quantity:</label>
+              <div style="display: flex; align-items: center">
+                <div class="quantity-container">
+                  <button type="button" onclick="changeQuantity(-1)">−</button>
+                  <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    value="1"
+                    min="1"
+                  />
+                  <button type="button" onclick="changeQuantity(1)">+</button>
+                </div>
               </div>
-            </div>
-            <button type="submit" class="btn btn-danger">Buy</button>
-          </form>
-
-          <a href="/" class="btn btn-secondary">Back</a>
+              <button type="submit" class="btn btn-danger">Buy</button>
+            </form>
+          </div>
         </div>
       </div>
-      <script>
-        function changeQuantity(amount) {
-          let quantityInput = document.getElementById("quantity");
-          let currentValue = parseInt(quantityInput.value);
-          let newValue = currentValue + amount;
-          if (newValue < 1) newValue = 1;
-          quantityInput.value = newValue;
-        }
-      </script>
     </div>
 
-    <footer class="bg-dark text-white text-center p-3 mt-5">
+    <footer class="bg-dark text-white text-center p-3 mt-auto">
       &copy; 2025 Your Brand. All rights reserved.
     </footer>
+    <script>
+      function changeQuantity(amount) {
+        let quantityInput = document.getElementById("quantity");
+        let currentValue = parseInt(quantityInput.value);
+        let newValue = currentValue + amount;
+        if (newValue < 1) newValue = 1;
+        quantityInput.value = newValue;
+      }
+    </script>
   </body>
 </html>

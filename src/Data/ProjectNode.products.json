@@ -1,146 +1,137 @@
-[{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b74c"
+[
+  {
+    "_id": {
+      "$oid": "67d2d704be8d1fe7ba72b74d"
+    },
+    "productId": 102,
+    "name": "Phone",
+    "img": "phone.png",
+    "type": "Electronics",
+    "price": "500",
+    "quantity": 20
   },
-  "productId": 101,
-  "name": "a",
-  "img": "a",
-  "type": "a",
-  "price": "a",
-  "quantity": 1
-},
-{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b74d"
+  {
+    "_id": {
+      "$oid": "67d2d704be8d1fe7ba72b74e"
+    },
+    "productId": 103,
+    "name": "Tablet",
+    "img": "tablet.png",
+    "type": "Electronics",
+    "price": "700",
+    "quantity": 15
   },
-  "productId": 102,
-  "name": "Phone",
-  "img": "phone.png",
-  "type": "Electronics",
-  "price": "500",
-  "quantity": 20
-},
-{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b74e"
+  {
+    "_id": {
+      "$oid": "67d2d704be8d1fe7ba72b74f"
+    },
+    "productId": 104,
+    "name": "Headphones",
+    "img": "headphones.png",
+    "type": "Accessories",
+    "price": "150",
+    "quantity": 50
   },
-  "productId": 103,
-  "name": "Tablet",
-  "img": "tablet.png",
-  "type": "Electronics",
-  "price": "700",
-  "quantity": 15
-},
-{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b74f"
+  {
+    "_id": {
+      "$oid": "67d2d704be8d1fe7ba72b750"
+    },
+    "productId": 105,
+    "name": "Camera",
+    "img": "camera.png",
+    "type": "Electronics",
+    "price": "1200",
+    "quantity": 8
   },
-  "productId": 104,
-  "name": "Headphones",
-  "img": "headphones.png",
-  "type": "Accessories",
-  "price": "150",
-  "quantity": 50
-},
-{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b750"
+  {
+    "_id": {
+      "$oid": "67d2d704be8d1fe7ba72b751"
+    },
+    "productId": 106,
+    "name": "Monitor",
+    "img": "monitor.png",
+    "type": "Electronics",
+    "price": "300",
+    "quantity": 12
   },
-  "productId": 105,
-  "name": "Camera",
-  "img": "camera.png",
-  "type": "Electronics",
-  "price": "1200",
-  "quantity": 8
-},
-{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b751"
+  {
+    "_id": {
+      "$oid": "67d2d704be8d1fe7ba72b752"
+    },
+    "productId": 107,
+    "name": "Keyboard",
+    "img": "keyboard.png",
+    "type": "Accessories",
+    "price": "80",
+    "quantity": 30
   },
-  "productId": 106,
-  "name": "Monitor",
-  "img": "monitor.png",
-  "type": "Electronics",
-  "price": "300",
-  "quantity": 12
-},
-{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b752"
+  {
+    "_id": {
+      "$oid": "67d2d704be8d1fe7ba72b753"
+    },
+    "productId": 108,
+    "name": "Mouse",
+    "img": "mouse.png",
+    "type": "Accessories",
+    "price": "40",
+    "quantity": 40
   },
-  "productId": 107,
-  "name": "Keyboard",
-  "img": "keyboard.png",
-  "type": "Accessories",
-  "price": "80",
-  "quantity": 30
-},
-{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b753"
+  {
+    "_id": {
+      "$oid": "67d2d704be8d1fe7ba72b754"
+    },
+    "productId": 109,
+    "name": "Smartwatch",
+    "img": "smartwatch.png",
+    "type": "Electronics",
+    "price": "250",
+    "quantity": 25
   },
-  "productId": 108,
-  "name": "Mouse",
-  "img": "mouse.png",
-  "type": "Accessories",
-  "price": "40",
-  "quantity": 40
-},
-{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b754"
+  {
+    "_id": {
+      "$oid": "67d2d704be8d1fe7ba72b755"
+    },
+    "productId": 110,
+    "name": "Speaker",
+    "img": "speaker.png",
+    "type": "Accessories",
+    "price": "200",
+    "quantity": 18
   },
-  "productId": 109,
-  "name": "Smartwatch",
-  "img": "smartwatch.png",
-  "type": "Electronics",
-  "price": "250",
-  "quantity": 25
-},
-{
-  "_id": {
-    "$oid": "67d2d704be8d1fe7ba72b755"
+  {
+    "_id": {
+      "$oid": "67d4dc44f777c0183790ac81"
+    },
+    "name": "a",
+    "img": "a",
+    "type": "a",
+    "price": "a",
+    "quantity": 1,
+    "productId": 1,
+    "__v": 0
   },
-  "productId": 110,
-  "name": "Speaker",
-  "img": "speaker.png",
-  "type": "Accessories",
-  "price": "200",
-  "quantity": 18
-},
-{
-  "_id": {
-    "$oid": "67d4dc44f777c0183790ac81"
+  {
+    "_id": {
+      "$oid": "67d4dc8bf777c0183790ac84"
+    },
+    "name": "a",
+    "img": "a",
+    "type": "a",
+    "price": "a",
+    "quantity": 1,
+    "productId": 2,
+    "__v": 0
   },
-  "name": "a",
-  "img": "a",
-  "type": "a",
-  "price": "a",
-  "quantity": 1,
-  "productId": 1,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "67d4dc8bf777c0183790ac84"
-  },
-  "name": "a",
-  "img": "a",
-  "type": "a",
-  "price": "a",
-  "quantity": 1,
-  "productId": 2,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "67d4dc9df777c0183790ac88"
-  },
-  "name": "a",
-  "img": "a",
-  "type": "a",
-  "price": "a",
-  "quantity": 1,
-  "productId": 3,
-  "__v": 0
-}]
+  {
+    "_id": {
+      "$oid": "67d4dc9df777c0183790ac88"
+    },
+    "name": "a",
+    "img": "a",
+    "type": "a",
+    "price": "a",
+    "quantity": 1,
+    "productId": 3,
+    "__v": 0
+  }
+]

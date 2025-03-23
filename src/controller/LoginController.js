@@ -1,5 +1,5 @@
 const User = require("../models/Users");
-const Product = require("../models/Products");
+const Product = require("../models/Product");
 const getLogin = (req, res) => {
   res.render("Login", { error: null });
 };
