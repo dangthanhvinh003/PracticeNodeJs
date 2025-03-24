@@ -5,15 +5,15 @@ const {
   postUpdateUser,
   postAddUser,
   getEditUser,
-} = require("../controller/UserController");
+} = require("../controllers/UserController");
 const {
   getAllProduct,
   getProductById,
   postUpdateProduct,
   postAddProduct,
-} = require("../controller/ProductController");
-const { getCart, postAddOrder } = require("../controller/OrderController");
-const { getLogin, Login, getInit } = require("../controller/LoginController");
+} = require("../controllers/ProductController");
+const { getCart, postAddOrder } = require("../controllers/OrderController");
+const { getLogin, Login, getInit, register, getRegister } = require("../controllers/AuthController");
 const router = express.Router();
 const multer = require("multer");
 // Cấu hình Multer để upload file lên bộ nhớ
@@ -36,15 +36,19 @@ router.post("/Product/addProduct", postAddProduct);
 router.post("/Order/addOrder", postAddOrder);
 router.get("/Order/cart", getCart);
 
-//Login
+// Auth
 router.get("/", getInit);
 router.get("/login", getLogin);
 router.post("/login", Login);
-//log out
+router.get("/register", getRegister);
+router.post("/register", register);
+
+// Log out
 router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     res.clearCookie("connect.sid"); // Xóa cookie session
     return res.redirect("/"); // Chuyển hướng về trang login
   });
 });
+
 module.exports = router;

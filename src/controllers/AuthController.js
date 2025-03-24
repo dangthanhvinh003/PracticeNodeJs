@@ -22,8 +22,26 @@ const getInit = async (req, res) => {
   let List = await Product.find({});
   res.render("Homepage", { ListProduct: List, User: req.session.user || null });
 };
+
+const getRegister = (req, res) => {
+  res.render("Register", { error: null, message: null });
+};
+
+const register = async (req, res) => {
+  const { email, pass } = req.body;
+  try {
+    let newUser = new User({ email, pass });
+    await newUser.save();
+    res.render("Login", { error: null, message: "Registration successful. Please log in." });
+  } catch (err) {
+    res.render("Register", { error: "Registration failed. Please try again." });
+  }
+};
+
 module.exports = {
   getLogin,
   Login,
   getInit,
+  register,
+  getRegister
 };
