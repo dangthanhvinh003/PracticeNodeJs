@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,11 +8,55 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .navbar {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
       .card:hover {
-        transform: scale(1.05);
-        transition: 0.3s;
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-img-top {
+        border-radius: 10px 10px 0 0;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        transition: background-color 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+      }
+
+      .dropdown-menu {
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .dropdown-item:hover {
+        background-color: #f8f9fa;
       }
     </style>
   </head>
@@ -74,7 +118,7 @@
         <div class="col-md-4 mb-4">
           <div class="card">
             <img
-              src="<%= ListProduct[i].img %>"
+              src="https://fastly.picsum.photos/id/336/200/300.jpg?hmac=FYvgN5rqQdtTh1q0wSE75sgfBRdhD-qNJwP12mTVXTc"
               class="card-img-top"
               alt="Product Image"
             />
@@ -98,6 +142,384 @@
         </div>
         <% } %>
       </div>
+    </div>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Yourself Outside</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      :root {
+        --primary-blue: #0B0BCF;
+        --dark-blue: #300A6E;
+        --bright-red: #FF2D2B;
+        --dark-red: #C10A28;
+        --light-bg: #F8F9FA;
+      }
+      
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--light-bg);
+        color: #333;
+        padding-top: 80px;
+      }
+
+      /* Navbar Styling */
+      .navbar {
+        background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: white !important;
+        letter-spacing: 1px;
+      }
+
+      .navbar-brand span {
+        color: var(--bright-red);
+      }
+
+      .nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-weight: 500;
+        margin: 0 10px;
+        position: relative;
+        transition: all 0.3s;
+      }
+
+      .nav-link:hover {
+        color: white !important;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--bright-red);
+        transition: width 0.3s;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Header Styling */
+      .hero-header {
+        height: 70vh;
+        min-height: 500px;
+        background: linear-gradient(rgba(48, 10, 110, 0.8), rgba(11, 11, 207, 0.8)), 
+                    url('https://images.unsplash.com/photo-1504851149312-7a075b496cc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-bottom: 80px;
+        clip-path: ellipse(100% 100% at 50% 0%);
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      .btn-hero {
+        background-color: var(--bright-red);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(255, 45, 43, 0.4);
+      }
+
+      .btn-hero:hover {
+        background-color: var(--dark-red);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 45, 43, 0.6);
+        color: white;
+      }
+
+      /* Auth Buttons */
+      .auth-buttons .btn {
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .auth-buttons .btn-login {
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+        margin-right: 10px;
+      }
+
+      .auth-buttons .btn-login:hover {
+        background-color: white;
+        color: var(--primary-blue);
+      }
+
+      .auth-buttons .btn-signup {
+        background-color: var(--bright-red);
+        border: 2px solid var(--bright-red);
+        color: white;
+      }
+
+      .auth-buttons .btn-signup:hover {
+        background-color: var(--dark-red);
+        border-color: var(--dark-red);
+      }
+
+      /* User Avatar */
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid white;
+        transition: all 0.3s;
+      }
+
+      .user-avatar:hover {
+        transform: scale(1.1);
+        border-color: var(--bright-red);
+      }
+
+      /* Section Styling */
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--dark-blue);
+        margin-bottom: 15px;
+      }
+
+      .section-title .divider {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--bright-red), var(--dark-red));
+        margin: 0 auto;
+        border-radius: 2px;
+      }
+
+      /* Card Styling */
+      .card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s;
+        margin-bottom: 30px;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .card:hover .card-img-top {
+        transform: scale(1.05);
+      }
+
+      .card-body {
+        padding: 25px;
+      }
+
+      .card-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--dark-blue);
+        margin-bottom: 10px;
+      }
+
+      .card-text {
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .btn-card {
+        background-color: var(--bright-red);
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+
+      .btn-card:hover {
+        background-color: var(--dark-red);
+        transform: translateY(-2px);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Find <span>Yourself</span> Outside</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Destinations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Activities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+          <div class="auth-buttons ms-3">
+            <% if (User) { %>
+              <div class="d-flex align-items-center">
+                <a href="/Order/cart" class="btn btn-login me-2">
+                  <i class="fas fa-shopping-cart"></i>
+                </a>
+                <div class="dropdown">
+                  <img src="<%= User.img %>" class="user-avatar" data-bs-toggle="dropdown" alt="User">
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="/editUser"><i class="fas fa-user me-2"></i> Profile</a></li>
+                    <li><a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                  </ul>
+                </div>
+              </div>
+            <% } else { %>
+              <a href="/login" class="btn btn-login">Login</a>
+              <a href="/signup" class="btn btn-signup">Sign Up</a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="hero-header">
+      <div class="hero-content">
+        <h1 class="hero-title">Discover Your Next Adventure</h1>
+        <p class="hero-subtitle">
+          Book unique camping experiences on over 300,000 campsites, cabins, RV parks, and public parks worldwide.
+        </p>
+        <a href="#" class="btn btn-hero">Explore Now</a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <!-- Top Products Section -->
+      <section class="mb-5">
+        <div class="section-title">
+          <h2>Featured Experiences</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="row">
+          <% const topProducts = ListProduct.sort((a, b) => b.price - a.price).slice(0, 4); %>
+          <% topProducts.forEach(product => { %>
+          <div class="col-lg-3 col-md-6">
+            <div class="card h-100">
+              <img src="<%= product.img %>" class="card-img-top" alt="<%= product.name %>">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><%= product.name %></h5>
+                <p class="card-text"><%= product.description || 'Experience the great outdoors in style' %></p>
+                <div class="mt-auto">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">$<%= product.price %></span>
+                    <a href="/Product/<%= product.productId %>" class="btn btn-card">View</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </section>
+
+      <!-- All Products Section -->
+      <section class="mb-5">
+        <div class="section-title">
+          <h2>All Adventures</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="row">
+          <% ListProduct.forEach(product => { %>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <img src="<%= product.img %>" class="card-img-top" alt="<%= product.name %>">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><%= product.name %></h5>
+                <p class="card-text"><%= product.description || 'Perfect getaway for nature lovers' %></p>
+                <div class="mt-auto">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">$<%= product.price %></span>
+                    <a href="/Product/<%= product.productId %>" class="btn btn-card">Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </section>
     </div>
   </body>
 </html>

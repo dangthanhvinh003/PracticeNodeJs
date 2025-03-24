@@ -14,10 +14,11 @@ const {
 } = require("../controller/ProductController");
 const {
   getAllOrder,
-  getOrderById,
+  // getOrderById,
   postAddOrder,
 } = require("../controller/OrderController");
 const { getLogin, Login, getInit } = require("../controller/LoginController");
+const { getSignUp, postSignUp } = require("../controller/SignUpController");
 const router = express.Router();
 const multer = require("multer");
 // Cấu hình Multer để upload file lên bộ nhớ
@@ -38,8 +39,12 @@ router.post("/Product/addProduct", postAddProduct);
 
 //Order
 router.get("/Order", getAllOrder);
-router.get("/Order/:id", getOrderById);
+// router.get("/Order/:id", getOrderById);
 router.post("/Order/addOrder", postAddOrder);
+
+//Sign Up
+router.get("/signup", getSignUp); // Route hiển thị trang Sign Up
+router.post("/signup", postSignUp);
 
 //Login
 router.get("/", getInit);
