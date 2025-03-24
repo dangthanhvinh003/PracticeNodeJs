@@ -1,15 +1,15 @@
-const Product = require("../models/Product");
+import Product from "../models/Product.js";
 
-const getAllProduct = async (req, res) => {
+export const getAllProduct = async (req, res) => {
   let result = await Product.find({});
   console.log(result);
-  //res.render("Homepage", { ListProduct: result });
   return res.status(200).json({
     errCode: 0,
     data: result,
   });
 };
-const getProductById = async (req, res) => {
+
+export const getProductById = async (req, res) => {
   let id = Number(req.params.id);
   if (isNaN(id)) {
     return res.status(400).send("Invalid product ID");
@@ -21,7 +21,7 @@ const getProductById = async (req, res) => {
   res.render("Product/DetailProduct", { productDetail: result });
 };
 
-const postUpdateProduct = async (req, res) => {
+export const postUpdateProduct = async (req, res) => {
   let id = req.body.id;
   let name = req.body.name;
   let img = req.body.img;
@@ -41,13 +41,12 @@ const postUpdateProduct = async (req, res) => {
   });
 };
 
-const postAddProduct = async (req, res) => {
+export const postAddProduct = async (req, res) => {
   let name = req.body.name;
   let img = req.body.img;
   let type = req.body.type;
   let price = req.body.price;
   let quantity = req.body.quantity;
-  //const { id, name, email, img } = req.body;
   let user = await Product.create({
     name: name,
     img: img,
@@ -61,10 +60,4 @@ const postAddProduct = async (req, res) => {
   return res.status(200).json({
     data: user,
   });
-};
-module.exports = {
-  getAllProduct,
-  getProductById,
-  postAddProduct,
-  postUpdateProduct,
 };

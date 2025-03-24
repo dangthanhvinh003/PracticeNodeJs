@@ -1,18 +1,20 @@
-const mongoose = require("mongoose");
-const AutoIncrement = require("mongoose-sequence")(mongoose);
+import mongoose from "mongoose";
 
-const OrderSchema = new mongoose.Schema({
-  orderId: { type: Number, unique: true }, // Số tự động tăng
-  userId: { type: mongoose.Schema.Types.Number, ref: "User" }, // Tham chiếu userId
+const { Schema, model } = mongoose;
+
+const OrderSchema = new Schema({
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
   status: {
     type: String,
-    enum: ["Pending", "Success", "Cancel"],
+    enum: ["Pending", "Success", "Cancel", "Failed", "Payment"],
     default: "Pending",
+    required: true,
   },
-  total: Number,
-  orderDate: { type: Date, default: Date.now },
+  total: { type: Number, required: true, min: 0 },
+  orderDate: { type: Date, default: Date.now, required: true },
+  metadata: { type: Schema.Types.Mixed }, // JSON object for metadata
 });
-OrderSchema.plugin(AutoIncrement, { inc_field: "orderId" });
-const Order = mongoose.model("Order", OrderSchema);
 
-module.exports = Order;
+const Order = model("Order", OrderSchema);
+
+export default Order;

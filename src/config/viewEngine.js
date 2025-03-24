@@ -1,13 +1,16 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
+import { resolve, join, dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const configViewEngine = (app) => {
-  //teamplate
-  app.set("views", path.resolve("./src", "View"));
+  //template
+  app.set("views", resolve(__dirname, "../View"));
   app.set("view engine", "ejs");
-  console.log("dirNamedirName" + __dirname);
-  //sttic files : css
-  app.use(express.static(path.join("./src", "public")));
+  console.log("dirNamedirName: " + __dirname);
+  //static files : css
+  app.use(express.static(join(__dirname, "../public")));
 };
 
-module.exports = configViewEngine;
+export default configViewEngine;

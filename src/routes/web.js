@@ -1,24 +1,17 @@
-const express = require("express");
-const {
-  getAllUser,
-  getUserById,
-  postUpdateUser,
-  postAddUser,
-  getEditUser,
-} = require("../controllers/UserController");
-const {
-  getAllProduct,
-  getProductById,
-  postUpdateProduct,
-  postAddProduct,
-} = require("../controllers/ProductController");
-const { getCart, postAddOrder } = require("../controllers/OrderController");
-const { getLogin, Login, getInit, register, getRegister } = require("../controllers/AuthController");
+import express from 'express';
+import { getAllUser, getUserById, postUpdateUser, postAddUser, getEditUser } from "../controllers/UserController.js";
+import { getAllProduct, getProductById, postUpdateProduct, postAddProduct } from "../controllers/ProductController.js";
+import { getCart, postAddOrder, checkout } from "../controllers/OrderController.js";
+import { getLogin, Login, getInit, register, getRegister } from "../controllers/AuthController.js";
+import multer, { memoryStorage } from "multer";
+
+
 const router = express.Router();
-const multer = require("multer");
+
 // Cấu hình Multer để upload file lên bộ nhớ
-const storage = multer.memoryStorage();
+const storage = memoryStorage();
 const upload = multer({ storage: storage });
+
 //UserUser
 router.get("/User", getAllUser);
 router.get("/User/:id", getUserById);
@@ -35,6 +28,7 @@ router.post("/Product/addProduct", postAddProduct);
 //Order
 router.post("/Order/addOrder", postAddOrder);
 router.get("/Order/cart", getCart);
+router.post("/Order/checkout", checkout);
 
 // Auth
 router.get("/", getInit);
@@ -51,4 +45,4 @@ router.get("/logout", (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

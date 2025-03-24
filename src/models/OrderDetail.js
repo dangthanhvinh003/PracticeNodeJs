@@ -1,12 +1,14 @@
-const mongoose = require("mongoose");
-const AutoIncrement = require("mongoose-sequence")(mongoose);
+import mongoose from "mongoose";
 
-const OrderDetailSchema = new mongoose.Schema({
-  orderId: { type: mongoose.Schema.Types.Number, ref: "Order" }, // Số tự động tăng
-  productId: { type: mongoose.Schema.Types.Number, ref: "Product" }, // Tham chiếu productId
-  price: Number,
-  quantity: Number,
+const { Schema, model } = mongoose;
+
+const OrderDetailSchema = new Schema({
+  orderId: { type: Schema.Types.ObjectId, ref: "Order", required: true }, 
+  productId: { type: Schema.Types.ObjectId, ref: "Product", required: true }, 
+  price: { type: Number, required: true, min: 0 },
+  quantity: { type: Number, required: true, min: 0 },
 });
-const OrderDetail = mongoose.model("OrderDetail", OrderDetailSchema);
 
-module.exports = OrderDetail;
+const OrderDetail = model("OrderDetail", OrderDetailSchema);
+
+export default OrderDetail;

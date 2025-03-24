@@ -1,7 +1,7 @@
-const User = require("../models/Users");
-const { uploadToCloudinary } = require("./CloudinaryController"); // Import Cloudinary config
-const multer = require("multer");
-const getAllUser = async (req, res) => {
+import User from "../models/Users.js";
+import { uploadToCloudinary } from "./CloudinaryController.js";
+
+export const getAllUser = async (req, res) => {
   let result = await User.find({});
   console.log(result);
   //res.render("Homepage", { ListUser: result });
@@ -10,30 +10,15 @@ const getAllUser = async (req, res) => {
   });
 };
 
-const getUserById = async (req, res) => {
+export const getUserById = async (req, res) => {
   let id = req.params.id;
   let result = await User.find({ userId: id });
-  // console.log("check Session: " + JSON.stringify(req.session.user, null, 2));
-  // console.log(
-  //   "check Session: " + JSON.stringify(req.session.user.userId, null, 2)
-  // );
-  // console.log(
-  //   "check Session: " + JSON.stringify(req.session.user.name, null, 2)
-  // );
-  // console.log(
-  //   "check Session: " + JSON.stringify(req.session.user.email, null, 2)
-  // );
-  // console.log(
-  //   "check Session: " + JSON.stringify(req.session.user.pass, null, 2)
-  // );
-  console.log(result);
-  //res.render("Homepage", { ListUser: result });
   return res.status(200).json({
     data: result,
   });
 };
 
-const postUpdateUser = async (req, res) => {
+export const postUpdateUser = async (req, res) => {
   let id = req.session.user.userId;
   let name = req.body.name;
   let email = req.body.email;
@@ -57,7 +42,7 @@ const postUpdateUser = async (req, res) => {
   res.redirect("/");
 };
 
-const postAddUser = async (req, res) => {
+export const postAddUser = async (req, res) => {
   let name = req.body.name;
   let email = req.body.email;
   let pass = req.body.pass;
@@ -77,17 +62,9 @@ const postAddUser = async (req, res) => {
   });
 };
 
-const getEditUser = async (req, res) => {
+export const getEditUser = async (req, res) => {
   let id = req.session.user.userId;
   console.log(id);
   let find = await User.findOne({ userId: id });
   res.render("User/UpdateProfile", { UserProfile: find });
-};
-
-module.exports = {
-  getAllUser,
-  getUserById,
-  postUpdateUser,
-  postAddUser,
-  getEditUser,
 };

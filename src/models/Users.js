@@ -1,19 +1,16 @@
-const mongoose = require("mongoose");
-const AutoIncrement = require("mongoose-sequence")(mongoose);
-//shape data
-const UserSchema = new mongoose.Schema({
-  // Auto increment
-  // install library npm install mongoose-sequence
-  userId: { type: Number, unique: true }, // Số tự động tăng
+import mongoose from 'mongoose';
+
+const { Schema, model } = mongoose;
+
+const UserSchema = new Schema({
   name: { type: String },
-  email: { type: String },
-  pass: { type: String },
+  email: { type: String, required: true, unique: true },
+  pass: { type: String, required: true },
   city: { type: String },
   role: { type: String },
   img: { type: String },
 });
-// Kích hoạt auto-increment cho userId
-UserSchema.plugin(AutoIncrement, { inc_field: "userId" });
-const User = mongoose.model("User", UserSchema);
 
-module.exports = User;
+const User = model("User", UserSchema);
+
+export default User;

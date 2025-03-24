@@ -1,4 +1,4 @@
-const mongoose = require("mongoose"); // always init in herehere
+import mongoose from "mongoose"; // always init in here
 
 const dbState = [
   { value: 0, label: "disconnected" },
@@ -8,7 +8,6 @@ const dbState = [
 ];
 
 const connection = async () => {
-  // Or:
   try {
     const option = { dbName: "ProjectNode" };
     await mongoose.connect("mongodb://127.0.0.1:27017", option);
@@ -20,4 +19,4 @@ const connection = async () => {
   }
 };
 
-module.exports = connection;
+export default connection;
