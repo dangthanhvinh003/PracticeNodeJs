@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const router = require("./router/web");
+const router = require("./routes/web");
 const connection = require("./config/DBconfig");
 const mongoose = require("mongoose");
 const configViewEngine = require("./config/viewEngine");

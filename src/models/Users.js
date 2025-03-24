@@ -5,12 +5,12 @@ const UserSchema = new mongoose.Schema({
   // Auto increment
   // install library npm install mongoose-sequence
   userId: { type: Number, unique: true }, // Số tự động tăng
-  name: String,
-  email: String,
-  pass: String,
-  city: String,
-  role: String,
-  img: String,
+  name: { type: String },
+  email: { type: String },
+  pass: { type: String },
+  city: { type: String },
+  role: { type: String },
+  img: { type: String },
 });
 // Kích hoạt auto-increment cho userId
 UserSchema.plugin(AutoIncrement, { inc_field: "userId" });

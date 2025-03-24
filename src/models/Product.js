@@ -8,7 +8,7 @@ const ProductSchema = new mongoose.Schema({
   name: String,
   img: String,
   type: String,
-  price: String,
+  price: Number,
   quantity: Number,
 });
 // Kích hoạt auto-increment cho userId
