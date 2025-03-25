@@ -6,33 +6,145 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Order Detail</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-blue: #0B0BCF;
+      --dark-blue: #300A6E;
+      --bright-red: #FF2D2B;
+      --dark-red: #C10A28;
+      --light-bg: #F8F9FA;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: #333;
+      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: white !important;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand span {
+      color: var(--bright-red);
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-weight: 500;
+      margin: 0 10px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .nav-link:hover {
+      color: white !important;
+    }
+
+    /* Order Detail Page Styling */
+    .order-container {
+      margin-top: 100px;
+      margin-bottom: 50px;
+    }
+
+    .order-table {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .order-table th,
+    .order-table td {
+      padding: 15px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .order-table th {
+      background-color: var(--primary-blue);
+      color: white;
+      font-weight: 600;
+    }
+
+    .order-table td {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .order-total {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark-blue);
+      text-align: right;
+      padding: 15px;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+      color: white;
+      padding: 15px 0;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
   <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="/">Brand</a>
+        <a class="navbar-brand" href="/">Find <span>Yourself</span> Outside</a>
       </div>
     </nav>
-    <div class="container mt-5">
+    <div class="container order-container">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Order Detail</h2>
-        <% 
-          let statusClass = "";
-          switch(order.status) {
-            case "Pending": statusClass = "bg-warning"; break;
-            case "Success": statusClass = "bg-success"; break;
-            case "Cancel": statusClass = "bg-danger"; break;
-            case "Payment": statusClass = "bg-info"; break;
-            case "Failed": statusClass = "bg-danger"; break;
-            default: statusClass = "bg-secondary";
-          }
-        %>
-        <span class="badge <%= statusClass %> fs-6">Status: <%= order.status %></span>
+        <% let statusClass="" ; switch(order.status) { case "Pending" : statusClass="bg-warning" ; break; case "Success"
+          : statusClass="bg-success" ; break; case "Cancel" : statusClass="bg-danger" ; break; case "Payment" :
+          statusClass="bg-info" ; break; case "Failed" : statusClass="bg-danger" ; break; default:
+          statusClass="bg-secondary" ; } %>
+          <span class="badge <%= statusClass %> fs-6">Status: <%= order.status %></span>
       </div>
-      
-      <table class="table table-bordered">
+
+      <table class="table table-bordered order-table">
         <thead>
           <tr>
             <th>Product</th>
@@ -42,7 +154,7 @@
           </tr>
         </thead>
         <tbody>
-          <% orderDetails.forEach(detail => { %>
+          <% orderDetails.forEach(detail=> { %>
             <tr>
               <td>
                 <%= detail.productId.name %>
@@ -55,15 +167,19 @@
               <td>$<%= detail.quantity * detail.productId.price %>
               </td>
             </tr>
-          <% }) %>
+            <% }) %>
         </tbody>
       </table>
-      <h3>Total: $<%= total %></h3>
+      <div class="order-total">
+        Total: $<%= total %>
+      </div>
     </div>
   </div>
 
-  <footer class="bg-dark text-white text-center p-3 mt-auto">
-    &copy; 2025 Your Brand. All rights reserved.
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Find Yourself Outside. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 

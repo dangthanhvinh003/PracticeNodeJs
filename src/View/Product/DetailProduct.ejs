@@ -67,7 +67,7 @@
             <h2><%= productDetail.name %></h2>
             <h4 class="text-primary">$<%= productDetail.price %></h4>
             <p><%= productDetail.description %></p>
-            <form action="/Order/addOrder" method="POST">
+            <form action="/Order/addProduct" method="POST">
               <input
                 type="hidden"
                 name="productId"
@@ -216,13 +216,13 @@
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transition: all 0.3s;
-        height: 100%;
+        height: 80%;
       }
 
       .product-image img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        aspect-ratio: 1/1;
+        object-fit: contain;
       }
 
       .product-info {
@@ -462,7 +462,7 @@
       document.getElementById('addToCartBtn').addEventListener('click', function() {
         const productId = '<%= productDetail.productId %>';
         
-        axios.post('/Order/addOrder', {
+        axios.post('/Order/addProduct', {
           productId: productId,
           quantity: currentQuantity
         })
@@ -493,7 +493,7 @@
       document.getElementById('buyNowBtn').addEventListener('click', function() {
         const productId = '<%= productDetail.productId %>';
         
-        axios.post('/Order/addOrder', {
+        axios.post('/Order/addProduct', {
           productId: productId,
           quantity: currentQuantity,
           redirectToCart: true

@@ -6,54 +6,219 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shopping Cart</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-blue: #0B0BCF;
+      --dark-blue: #300A6E;
+      --bright-red: #FF2D2B;
+      --dark-red: #C10A28;
+      --light-bg: #F8F9FA;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: #333;
+      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: white !important;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand span {
+      color: var(--bright-red);
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-weight: 500;
+      margin: 0 10px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .nav-link:hover {
+      color: white !important;
+    }
+
+    .cart-icon {
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: var(--bright-red);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* Cart Page Styling */
+    .cart-container {
+      margin-top: 100px;
+      margin-bottom: 50px;
+    }
+
+    .cart-table {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .cart-table th, .cart-table td {
+      padding: 15px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .cart-table th {
+      background-color: var(--primary-blue);
+      color: white;
+      font-weight: 600;
+    }
+
+    .cart-table td {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .cart-total {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark-blue);
+      text-align: right;
+      padding: 10px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .btn-checkout {
+      background-color: var(--bright-red);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(255, 45, 43, 0.4);
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn-checkout:hover {
+      background-color: var(--dark-red);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 45, 43, 0.6);
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+      color: white;
+      padding: 15px 0;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
   <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="/">Brand</a>
+        <a class="navbar-brand" href="/">Find <span>Yourself</span> Outside</a>
       </div>
     </nav>
-    <div class="container mt-5">
+    <div class="container cart-container">
       <h2>Shopping Cart</h2>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% orderDetails.forEach(detail=> { %>
-            <tr>
-              <td>
-                <%= detail.productId.name %>
-              </td>
-              <td>$<%= detail.productId.price %>
-              </td>
-              <td>
-                <%= detail.quantity %>
-              </td>
-              <td>$<%= detail.quantity * detail.productId.price %>
-              </td>
-            </tr>
-            <% }) %>
-        </tbody>
+      <table class="table table-bordered cart-table">
+      <thead>
+        <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% orderDetails.forEach(detail => { %>
+        <tr>
+          <td><%= detail.productId.name %></td>
+          <td>$<%= detail.productId.price %></td>
+          <td><%= detail.quantity %></td>
+          <td>$<%= detail.quantity * detail.productId.price %></td>
+          <td>
+            <form action="/Order/removeProduct" method="POST" style="display:inline;">
+              <input type="hidden" name="productId" value="<%= detail.productId.productId %>">
+              <button type="submit" class="btn btn-link text-danger p-0">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
       </table>
-      <h3>Total: $<%= total %>
-      </h3>
+      <div class="cart-total">
+      Total: $<%= total %>
+      </div>
       <form action="/Order/checkout" method="POST">
-        <button type="submit" class="btn btn-success">Checkout</button>
+      <button type="submit" class="btn btn-checkout">Checkout</button>
       </form>
     </div>
-  </div>
+    </div>
 
-  <footer class="bg-dark text-white text-center p-3 mt-auto">
-    &copy; 2025 Your Brand. All rights reserved.
-  </footer>
-</body>
+    <footer class="footer text-center">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Find Yourself Outside. All rights reserved.</p>
+    </div>
+    </footer>
+  </body>
 
 </html>
