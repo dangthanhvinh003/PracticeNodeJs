@@ -6,7 +6,7 @@ const OrderSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.Number, ref: "User" }, // Tham chiếu userId
   status: {
     type: String,
-    enum: ["Pending", "Success", "Cancel"],
+    enum: ["Pending", "Success", "Cancel", "Payment", "Failed"],
     default: "Pending",
   },
   total: Number,
