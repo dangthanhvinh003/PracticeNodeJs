@@ -13,23 +13,11 @@ const {
   postAddProduct,
   getAddProductPage,
   getEditProductPage,
-  deleteProduct,
+  deleteProduct
 } = require("../controllers/ProductController");
-const {
-  getCart,
-  addProductToOrder,
-  checkout,
-  getOrderDetails,
-  getOrders,
-  removeProductFromOrder,
-} = require("../controllers/OrderController");
-const {
-  getLogin,
-  Login,
-  getInit,
-  register,
-  getRegister,
-} = require("../controllers/AuthController");
+const { filterProducts } = require("../controllers/FilterController");
+const { getCart, checkout, getOrderDetails, getOrders } = require("../controllers/OrderController");
+const { getLogin, Login, getInit, register, getRegister } = require("../controllers/AuthController");
 const router = express.Router();
 const multer = require("multer");
 const { vnpayReturn } = require("../controllers/VnPayController");
@@ -51,13 +39,13 @@ router.post("/Product/updateProduct", postUpdateProduct);
 // router.post("/Product/deleteProduct", deleteProduct);
 router.get("/Product", getAllProduct);
 router.get("/Product/:id", getProductById);
+router.get("/filter", filterProducts);
 
 //Order
-router.post("/Order/addProduct", addProductToOrder);
-router.post("/Order/removeProduct", removeProductFromOrder);
+// router.post("/Order/addOrder", postAddOrder);
 router.get("/Order/cart", getCart);
-router.post("/Order/checkout", checkout);
-router.get("/Order/vnpay-return", vnpayReturn);
+router.post("/Order/checkout", checkout)
+router.get("/Order/vnpay-return", vnpayReturn)
 router.get("/Order/:id", getOrderDetails);
 
 router.get("/orders", getOrders);
@@ -76,5 +64,7 @@ router.get("/logout", (req, res) => {
     return res.redirect("/"); // Chuyển hướng về trang login
   });
 });
+
+
 
 module.exports = router;
