@@ -12,10 +12,11 @@ const {
   postUpdateProduct,
   postAddProduct,
 } = require("../controllers/ProductController");
-const { getCart, postAddOrder } = require("../controllers/OrderController");
+const { getCart, postAddOrder, checkout, getOrderDetails, getOrders } = require("../controllers/OrderController");
 const { getLogin, Login, getInit, register, getRegister } = require("../controllers/AuthController");
 const router = express.Router();
 const multer = require("multer");
+const { vnpayReturn } = require("../controllers/VnPayController");
 // Cấu hình Multer để upload file lên bộ nhớ
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -35,6 +36,11 @@ router.post("/Product/addProduct", postAddProduct);
 //Order
 router.post("/Order/addOrder", postAddOrder);
 router.get("/Order/cart", getCart);
+router.post("/Order/checkout", checkout)
+router.get("/Order/vnpay-return", vnpayReturn)
+router.get("/Order/:id", getOrderDetails);
+
+router.get("/orders", getOrders);
 
 // Auth
 router.get("/", getInit);
