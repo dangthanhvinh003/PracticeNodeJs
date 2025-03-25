@@ -1,24 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Update Profile</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
-  <body>
-    <div class="container mt-5">
-      <h2>Update Profile</h2>
-      <form
-        id="updateForm"
-        action="/User/updateUser"
-        method="POST"
-        enctype="multipart/form-data"
-      >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-blue: #0B0BCF;
+      --dark-blue: #300A6E;
+      --bright-red: #FF2D2B;
+      --dark-red: #C10A28;
+      --light-bg: #F8F9FA;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: #333;
+      padding-top: 80px;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .form-title {
+      color: var(--dark-blue);
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background-color: var(--bright-red);
+      border: none;
+      padding: 10px 30px;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--dark-red);
+      transform: translateY(-2px);
+    }
+
+    .form-label {
+      font-weight: 500;
+      color: var(--dark-blue);
+    }
+
+    .form-control {
+      border-radius: 8px;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      transition: all 0.3s;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 0.25rem rgba(11, 11, 207, 0.25);
+    }
+
+    #preview {
+      border-radius: 50%;
+      border: 3px solid var(--primary-blue);
+      object-fit: cover;
+      width: 120px;
+      height: 120px;
+      display: block;
+      margin: 15px auto;
+    }
+
+    .image-upload-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .image-upload-label {
+      display: inline-block;
+      padding: 8px 20px;
+      background-color: var(--dark-blue);
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .image-upload-label:hover {
+      background-color: var(--primary-blue);
+      transform: translateY(-2px);
+    }
+
+    #imageInput {
+      display: none;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="form-container">
+      <h2 class="form-title">Update Profile</h2>
+      <form id="updateForm" action="/User/updateUser" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%= UserProfile.userId %>" />
 
         <div class="mb-3">
@@ -43,32 +138,48 @@
           />
         </div>
 
-        <div class="mb-3">
-          <label class="form-label">Profile Image</label>
-          <input type="file" name="img" class="form-control" id="imageInput" />
+        <div class="mb-3 image-upload-container">
+          <label for="imageInput" class="image-upload-label">
+            <i class="fas fa-camera me-2"></i>Change Profile Image
+          </label>
+          <input type="file" name="img" class="form-control" id="imageInput" accept="image/*" />
           <img
             id="preview"
             src="<%= UserProfile.img %>"
             alt="Profile Image"
             class="mt-2"
-            width="100"
+            onerror="this.src='/default-profile.jpg'"
           />
         </div>
 
-        <button type="submit" class="btn btn-primary">Update</button>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save me-2"></i>Update Profile
+          </button>
+        </div>
       </form>
     </div>
+  </div>
 
-    <script>
-      document
-        .getElementById("imageInput")
-        .addEventListener("change", function (event) {
-          const reader = new FileReader();
-          reader.onload = function () {
-            document.getElementById("preview").src = reader.result;
-          };
-          reader.readAsDataURL(event.target.files[0]);
-        });
-    </script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById("imageInput").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById("preview").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById("updateForm").addEventListener("submit", function() {
+      const submitBtn = this.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Updating...';
+    });
+  </script>
+</body>
 </html>

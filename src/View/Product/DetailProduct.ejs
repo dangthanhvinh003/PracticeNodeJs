@@ -133,11 +133,22 @@
         --light-bg: #F8F9FA;
       }
       
+      html, body {
+        height: 100%;
+      }
+      
       body {
         font-family: 'Poppins', sans-serif;
         background-color: var(--light-bg);
         color: #333;
         padding-top: 80px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      main {
+        flex: 1;
       }
 
       /* Navbar Styling */
@@ -332,8 +343,13 @@
       .footer {
         background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
         color: white;
-        padding: 30px 0;
-        margin-top: 80px;
+        padding: 15px 0;
+        margin-top: auto;
+        width: 100%;
+      }
+
+      .footer p {
+        margin: 0;
       }
 
       /* Success Message */
@@ -366,10 +382,10 @@
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
-    <!-- Product Detail Section -->
-    <div class="container product-detail">
+    <!-- Main Content -->
+    <main class="container product-detail">
       <div class="row">
-        <div class="col-lg-6 mb-4">
+        <div class="col-lg-6">
           <div class="product-image">
             <img
               src="<%= productDetail.img %>"
@@ -408,7 +424,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="footer text-center">

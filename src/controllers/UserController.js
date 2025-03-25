@@ -79,7 +79,6 @@ const postAddUser = async (req, res) => {
 
 const getEditUser = async (req, res) => {
   let id = req.session.user.userId;
-  console.log(id);
   let find = await User.findOne({ userId: id });
   res.render("User/UpdateProfile", { UserProfile: find });
 };

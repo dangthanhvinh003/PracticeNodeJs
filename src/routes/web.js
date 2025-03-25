@@ -11,6 +11,9 @@ const {
   getProductById,
   postUpdateProduct,
   postAddProduct,
+  getAddProductPage,
+  getEditProductPage,
+  deleteProduct
 } = require("../controllers/ProductController");
 const { getCart, postAddOrder } = require("../controllers/OrderController");
 const { getLogin, Login, getInit, register, getRegister } = require("../controllers/AuthController");
@@ -27,10 +30,14 @@ router.post("/User/addUser", postAddUser);
 router.get("/editUser", getEditUser);
 
 //product
+router.get("/Product/add-product", getAddProductPage);
+router.post("/Product/add-product", postAddProduct);
+router.get("/Product/edit/:id", getEditProductPage);
+router.post("/Product/updateProduct", postUpdateProduct);
+// router.post("/Product/deleteProduct", deleteProduct);
 router.get("/Product", getAllProduct);
 router.get("/Product/:id", getProductById);
-router.post("/Product/updateProduct", postUpdateProduct);
-router.post("/Product/addProduct", postAddProduct);
+
 
 //Order
 router.post("/Order/addOrder", postAddOrder);
@@ -50,5 +57,7 @@ router.get("/logout", (req, res) => {
     return res.redirect("/"); // Chuyển hướng về trang login
   });
 });
+
+
 
 module.exports = router;
