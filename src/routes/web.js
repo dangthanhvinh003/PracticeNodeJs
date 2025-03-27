@@ -16,7 +16,7 @@ const {
   deleteProduct
 } = require("../controllers/ProductController");
 const { filterProducts } = require("../controllers/FilterController");
-const { getCart, checkout, getOrderDetails, getOrders } = require("../controllers/OrderController");
+const { getCart, checkout, getOrderDetails, getOrders, addProductToOrder, removeProductFromOrder } = require("../controllers/OrderController");
 const { getLogin, Login, getInit, register, getRegister } = require("../controllers/AuthController");
 const router = express.Router();
 const multer = require("multer");
@@ -42,12 +42,12 @@ router.get("/Product/:id", getProductById);
 router.get("/filter", filterProducts);
 
 //Order
-// router.post("/Order/addOrder", postAddOrder);
+router.post("/Order/addProduct", addProductToOrder);
+router.post("/Order/removeProduct", removeProductFromOrder);
 router.get("/Order/cart", getCart);
-router.post("/Order/checkout", checkout)
-router.get("/Order/vnpay-return", vnpayReturn)
+router.post("/Order/checkout", checkout);
+router.get("/Order/vnpay-return", vnpayReturn);
 router.get("/Order/:id", getOrderDetails);
-
 router.get("/orders", getOrders);
 
 // Auth
