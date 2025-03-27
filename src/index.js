@@ -28,6 +28,14 @@ configViewEngine(app);
 //Use Router
 app.use("/", router);
 
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).json({
+    message: err.message || "Internal Server Error",
+  });
+});
+
 const PORT = 8082;
 
 //async await DB vì db dùng asyn await
